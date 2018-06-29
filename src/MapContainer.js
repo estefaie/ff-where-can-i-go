@@ -3,6 +3,18 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 const locations = [
   {
+    name: "The Renegades",
+    position: {
+      lat: "-33.923992",
+      lng: "151.187343"
+    },
+    type: "Cafe",
+    address: "Shop 1, 230 Coward Street, Mascot NSW 2020",
+    website: "the-renegades.com.au",
+    telephone: "(02) 8338 8884",
+    opening: "6am–8pm"
+  },
+  {
     name: "Lucca Cafe",
     position: {
       lat: "-33.924556",
@@ -141,15 +153,9 @@ export class MapContainer extends React.Component {
           marker={this.state.activeMarker}
           onClose={this.onInfoWindowClose}
           visible={this.state.showingInfoWindow}>
-          <div>
+          <div className="map-container-info-window">
             <h1>{this.state.selectedPlace.name}</h1>
           </div>
-        </InfoWindow>
-
-        <InfoWindow position={this.props.initialCenter} visible>
-          <small>
-            Click on any of the markers to display an additional info.
-          </small>
         </InfoWindow>
       </Map>
     );
