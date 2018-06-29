@@ -1,8 +1,9 @@
 import React from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 const locations = [
   {
+    merchantId: 1,
     name: "The Renegades",
     position: {
       lat: "-33.923992",
@@ -15,6 +16,7 @@ const locations = [
     opening: "6am–8pm"
   },
   {
+    merchantId: 2,
     name: "Lucca Cafe",
     position: {
       lat: "-33.924556",
@@ -27,6 +29,7 @@ const locations = [
     opening: "8am–3pm"
   },
   {
+    merchantId: 3,
     name: "Biggles Bar",
     position: {
       lat: "-33.926029",
@@ -39,6 +42,7 @@ const locations = [
     opening: "Opens at 12:00 pm"
   },
   {
+    merchantId: 4,
     name: "F45 Training Mascot",
     position: {
       lat: "-33.923827",
@@ -51,6 +55,7 @@ const locations = [
     opening: "5:15am–6pm"
   },
   {
+    merchantId: 5,
     name: "Excel Physiotherapy and Wellness",
     position: {
       lat: "-33.924352",
@@ -63,6 +68,7 @@ const locations = [
     opening: "8am–7pm"
   },
   {
+    merchantId: 6,
     name: "Priceline Pharmacy Mascot",
     position: {
       lat: "-33.923088",
@@ -75,6 +81,7 @@ const locations = [
     opening: "8am–9pm"
   },
   {
+    merchantId: 7,
     name: "Bunnings Mascot",
     position: {
       lat: "-33.919212",
@@ -109,10 +116,15 @@ export class MapContainer extends React.Component {
     });
 
   onInfoWindowClose = () =>
-    this.setState({
-      activeMarker: null,
-      showingInfoWindow: false
-    });
+  this.setState({
+    activeMarker: null,
+    showingInfoWindow: false
+  });
+
+  onInfoWindowClick = (e) => {
+    console.log('click click')
+    this.context.router.transitionTo('/map');
+  }
 
   onMapClicked = () => {
     if (this.state.showingInfoWindow)
@@ -153,8 +165,10 @@ export class MapContainer extends React.Component {
           marker={this.state.activeMarker}
           onClose={this.onInfoWindowClose}
           visible={this.state.showingInfoWindow}>
-          <div className="map-container-info-window">
-            <h1>{this.state.selectedPlace.name}</h1>
+          <div onClick={() => {console.log('clik')}}>
+            <div className="map-container-info-window">
+              <h1>{this.state.selectedPlace.name}</h1>
+            </div>
           </div>
         </InfoWindow>
       </Map>
