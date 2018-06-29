@@ -1,6 +1,23 @@
 import React from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
+const locations = [
+  {
+    name: "The Renegades",
+    position: {
+      lat: "-33.923992",
+      lng: "151.187343"
+    }
+  },
+  {
+    name: "Lucca Cafe",
+    position: {
+      lat: "-33.924556",
+      lng: "151.187502"
+    }
+  }
+];
+
 export class MapContainer extends React.Component {
 
   constructor(props) {
@@ -46,13 +63,17 @@ export class MapContainer extends React.Component {
         initialCenter = {this.state.initialCenter}
         zoom={14}>
 
-        {/* <Marker
-          name="SOMA"
-          onClick={this.onMarkerClick}
-          position={{ lat: 37.778519, lng: -122.40564 }}
-        />
+        {
+          locations.map(location => (
+            <Marker
+              name={location.name}
+              onClick={this.onMarkerClick}
+              position={location.position}
+            />
+          ))
+        }
 
-        <Marker
+        {/* <Marker
           name="Dolores park"
           onClick={this.onMarkerClick}
           position={{ lat: 37.759703, lng: -122.428093 }}
