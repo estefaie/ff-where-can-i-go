@@ -1,5 +1,6 @@
 import React from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Link } from 'react-router-dom';
 
 const locations = [
   {
@@ -135,13 +136,17 @@ export class MapContainer extends React.Component {
   };
   render() {
     if (!this.props.loaded) return <div>Loading...</div>;
-
+    console.log(this.state.selectedPlace);
     return (
+      <div>
+        <Link to={`/merchant/:${this.state.selectedPlace.merchantId}`}>
+          <div>{this.state.selectedPlace.name}</div>
+        </Link>
       <Map
         className="map"
         google={this.props.google}
         onClick={this.onMapClicked}
-        style={{ height: '100%', position: 'relative', width: '100%' }}
+        style={{ height: '80%', position: 'relative', width: '100%' }}
         initialCenter = {this.state.initialCenter}
         zoom={15}>
 
@@ -149,6 +154,7 @@ export class MapContainer extends React.Component {
           locations.map(location => (
             <Marker
               name={location.name}
+              merchantId={location.merchantId}
               onClick={this.onMarkerClick}
               position={location.position}
             />
@@ -165,13 +171,12 @@ export class MapContainer extends React.Component {
           marker={this.state.activeMarker}
           onClose={this.onInfoWindowClose}
           visible={this.state.showingInfoWindow}>
-          <div onClick={() => {console.log('clik')}}>
-            <div className="map-container-info-window">
-              <h1>{this.state.selectedPlace.name}</h1>
-            </div>
+          <div className="map-container-info-window">
+            <h1>{this.state.selectedPlace.name}</h1>
           </div>
         </InfoWindow>
       </Map>
+      </div>
     );
   }
 }
