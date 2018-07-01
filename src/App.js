@@ -9,6 +9,8 @@ const App = () => (
     <div>
       <Route exact path="/" component={MapContainer} />
       <Route path="/map" component={MapContainer} />
+      <Route path="/earn" component={MapContainer} />
+      <Route path="/redeem" component={MapContainer} />
       <Route
         path="/merchant/:merchantId"
         component={p => (

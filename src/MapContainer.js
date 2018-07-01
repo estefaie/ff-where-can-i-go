@@ -8,32 +8,61 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-
+import MenuItem from '@material-ui/core/MenuItem';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardActions from '@material-ui/core/CardActions';
+import Avatar from '@material-ui/core/Avatar';
+import AllOutIcon from '@material-ui/icons/AllOut';
+import Typography from '@material-ui/core/Typography';;
 
 const styles = theme => ({
-  formControl: {
-    margin: theme.spacing.unit,
-    minWidth: 200,
+  container: {
+    marginTop: 10
+  },
+  title: {
+    margin: 10
   },
   card: {
-    minWidth: 275,
+    minWidth: 400,
+    background: '#fafafa'
+  },
+  cardContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: 20
   },
   bullet: {
     display: 'inline-block',
     margin: '0 2px',
     transform: 'scale(0.8)',
   },
-  title: {
-    marginBottom: 16,
-    fontSize: 14,
-  },
   pos: {
     marginBottom: 12,
   },
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  formControl: {
+    display: 'flex',
+    justifyContent: 'center',
+    minWidth: '90%',
+    marginBottom: 20
+  },
+  selectEmpty: {
+    margin: theme.spacing.unit * 2,
+  },
+  actions: {
+    margin: 'auto',
+    display: 'table'
+  },
+  button: {
+    margin: theme.spacing.unit,
+  },
+  select: {
+    margin: 10
+  }
 });
 
 export class MapContainer extends React.Component {
@@ -81,38 +110,59 @@ export class MapContainer extends React.Component {
     });
   render() {
     if (!this.props.loaded) return <div>Loading...</div>;
+    const { classes } = this.props;
     return (
-      <div>
-        <FormControl>
-          <InputLabel htmlFor="category">Category</InputLabel>
+      <div className={classes.container}>
+        <Typography variant="title" gutterBottom className={classes.title}>
+          Where can I go to earn/redeem Qantas Frequent Flyer points?
+        </Typography>
+        <FormControl className={classes.formControl}>
+          <InputLabel htmlFor="category">Select a category</InputLabel>
           <Select
-            native
-            value={this.state.age}
-            inputProps={{
-              name: 'Category',
-              id: 'category',
-            }}
+            value={this.state.selectedType}
             onChange={this.onLocationTypeChange}
+            width="90%"
           >
-            <option value=""></option>)
-            { locationTypes.map((type) => <option value={type}>{type}</option>)}
+            <MenuItem value=""><em>None</em></MenuItem>)
+            { locationTypes.map((type) => <MenuItem value={type}>{type}</MenuItem>)}
           </Select>
         </FormControl>
 
         {this.state.selectedPlace.merchantId &&
-          <Link to={`/merchant/${this.state.selectedPlace.merchantId}`}>
-           <Card>
-              <CardContent>
-                <Typography variant="headline" component="h2">
-                  {this.state.selectedPlace.name}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small">Learn More</Button>
+          <div className={classes.cardContainer}>
+            <Card className={classes.card}>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="Recipe" className={classes.avatar}>
+                    {this.state.selectedPlace.name[0]}
+                  </Avatar>
+                }
+                title={this.state.selectedPlace.name}
+              />
+              <CardActions className={classes.actions} disableActionSpacing>
+                <div className={classes.buttonContainer}>
+                  <Button variant="outlined" size="large" color="primary"
+                    className={classes.button}
+                    component={Link} to={`/merchant/${this.state.selectedPlace.merchantId}`}>
+                    Details <AllOutIcon style={{marginLeft: 10}} />
+                  </Button>
+                </div>
               </CardActions>
             </Card>
-            <div></div>
-          </Link>
+          </div>
+          // <Card className={classes.card}>
+          //   <CardContent>
+          //     <Typography className={classes.title} variant="headline" component="h1">
+          //       {this.state.selectedPlace.name}
+          //     </Typography>
+          //   </CardContent>
+          //   <CardActions>
+          //   <Link to={`/merchant/${this.state.selectedPlace.merchantId}`}>
+
+          //     <Button size="small">Learn More</Button>
+          //   </Link>
+          //   </CardActions>
+          // </Card>
         }
       <Map
         className="map"
@@ -120,7 +170,7 @@ export class MapContainer extends React.Component {
         onClick={this.onMapClicked}
         style={{ height: '90%', position: 'relative', width: '100%' }}
         initialCenter = {this.state.initialCenter}
-        zoom={15}>
+        zoom={16}>
 
         {
           locations.filter((l) => this.state.selectedType === "" || l.type.includes(this.state.selectedType)).map(location => (
