@@ -150,19 +150,6 @@ export class MapContainer extends React.Component {
               </CardActions>
             </Card>
           </div>
-          // <Card className={classes.card}>
-          //   <CardContent>
-          //     <Typography className={classes.title} variant="headline" component="h1">
-          //       {this.state.selectedPlace.name}
-          //     </Typography>
-          //   </CardContent>
-          //   <CardActions>
-          //   <Link to={`/merchant/${this.state.selectedPlace.merchantId}`}>
-
-          //     <Button size="small">Learn More</Button>
-          //   </Link>
-          //   </CardActions>
-          // </Card>
         }
       <Map
         className="map"
@@ -170,7 +157,7 @@ export class MapContainer extends React.Component {
         onClick={this.onMapClicked}
         style={{ height: '90%', position: 'relative', width: '100%' }}
         initialCenter = {this.state.initialCenter}
-        zoom={16}>
+        zoom={15}>
 
         {
           locations.filter((l) => this.state.selectedType === "" || l.type.includes(this.state.selectedType)).map(location => (
