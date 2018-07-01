@@ -7,11 +7,32 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
 
 const styles = theme => ({
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 200,
+  },
+  card: {
+    minWidth: 275,
+  },
+  bullet: {
+    display: 'inline-block',
+    margin: '0 2px',
+    transform: 'scale(0.8)',
+  },
+  title: {
+    marginBottom: 16,
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
   },
 });
 
@@ -80,14 +101,24 @@ export class MapContainer extends React.Component {
 
         {this.state.selectedPlace.merchantId &&
           <Link to={`/merchant/${this.state.selectedPlace.merchantId}`}>
-            <div>{this.state.selectedPlace.name}</div>
+           <Card>
+              <CardContent>
+                <Typography variant="headline" component="h2">
+                  {this.state.selectedPlace.name}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button size="small">Learn More</Button>
+              </CardActions>
+            </Card>
+            <div></div>
           </Link>
         }
       <Map
         className="map"
         google={this.props.google}
         onClick={this.onMapClicked}
-        style={{ height: '80%', position: 'relative', width: '100%' }}
+        style={{ height: '90%', position: 'relative', width: '100%' }}
         initialCenter = {this.state.initialCenter}
         zoom={15}>
 
