@@ -3,7 +3,17 @@ import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import { Link } from 'react-router-dom';
 import locations from './locations';
 import { locationTypes } from './locations';
-import filter from 'lodash/filter';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  formControl: {
+    margin: theme.spacing.unit,
+    minWidth: 200,
+  },
+});
 
 export class MapContainer extends React.Component {
 
@@ -52,13 +62,27 @@ export class MapContainer extends React.Component {
     if (!this.props.loaded) return <div>Loading...</div>;
     return (
       <div>
-        <select onChange={this.onLocationTypeChange}>
-        <option value="">Everything</option>)
-          { locationTypes.map((type) => <option value={type}>{type}</option>)}
-        </select>
-        <Link to={`/merchant/${this.state.selectedPlace.merchantId}`}>
-          <div>{this.state.selectedPlace.name}</div>
-        </Link>
+        <FormControl>
+          <InputLabel htmlFor="category">Category</InputLabel>
+          <Select
+            native
+            value={this.state.age}
+            inputProps={{
+              name: 'Category',
+              id: 'category',
+            }}
+            onChange={this.onLocationTypeChange}
+          >
+            <option value=""></option>)
+            { locationTypes.map((type) => <option value={type}>{type}</option>)}
+          </Select>
+        </FormControl>
+
+        {this.state.selectedPlace.merchantId &&
+          <Link to={`/merchant/${this.state.selectedPlace.merchantId}`}>
+            <div>{this.state.selectedPlace.name}</div>
+          </Link>
+        }
       <Map
         className="map"
         google={this.props.google}
@@ -104,4 +128,4 @@ MapContainer.defaultProps = {
 
 export default GoogleApiWrapper({
   apiKey: ('AIzaSyDpgoPu5yKXRzArjgIEDAyRprrxr7MzoDs')
-})(MapContainer);
+})(withStyles(styles)(MapContainer));
