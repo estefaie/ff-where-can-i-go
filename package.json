@@ -5,6 +5,7 @@
   "dependencies": {
     "google-maps-react": "^2.0.2",
     "lodash": "^4.17.10",
+    "material-ui": "^0.20.1",
     "react": "^16.4.1",
     "react-autobind": "^1.0.6",
     "react-dom": "^16.4.1",
