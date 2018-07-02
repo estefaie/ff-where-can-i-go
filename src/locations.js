@@ -32,7 +32,7 @@ export const locations = [
       lat: "-33.926029",
       lng: "151.187615"
     },
-    type: "Food, Pub",
+    type: "Cafe, Food, Pub",
     address: "Bourke Rd, Mascot NSW 2020 Located in: Holiday Inn Sydney Airport",
     website: "holidayinn.com",
     telephone: "(02) 9330 0600",

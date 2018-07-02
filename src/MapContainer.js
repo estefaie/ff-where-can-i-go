@@ -100,7 +100,8 @@ export class MapContainer extends React.Component {
     if (this.state.showingInfoWindow)
       this.setState({
         activeMarker: null,
-        showingInfoWindow: false
+        showingInfoWindow: false,
+        selectedPlace: {}
       });
   };
   onLocationTypeChange = (type) =>
@@ -122,7 +123,7 @@ export class MapContainer extends React.Component {
             onChange={this.onLocationTypeChange}
             width="90%"
           >
-            <MenuItem value=""><em>None</em></MenuItem>)
+            <MenuItem value=""><em>All</em></MenuItem>)
             { locationTypes.map((type) => <MenuItem value={type}>{type}</MenuItem>)}
           </Select>
         </FormControl>
