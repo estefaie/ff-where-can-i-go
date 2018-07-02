@@ -52,27 +52,26 @@ const styles = theme => ({
 class Barcode extends React.Component {
   render() {
     const { classes } = this.props;
-    console.log(this.props.location)
-  return (
-    <div className={classes.container}>
-      <Card className={classes.card}>
-        <CardHeader
-          action={
-            <IconButton component={Link} to="/map">
-              <PlaceIcon />
-            </IconButton>
-          }
-          subheader={`Use this barcode to ${this.props.location.pathname === '/earn' ? 'Earn' : 'Burn' } frequent flyer points`}
-        />
-        <CardContent>
-          <img style={{width: '100%', height: 'auto'}}
-            src='https://s3-ap-southeast-2.amazonaws.com/ff-where-can-i-go/img/barcode.png'
-            alt="Barcode"
+    return (
+      <div className={classes.container}>
+        <Card className={classes.card}>
+          <CardHeader
+            action={
+              <IconButton component={Link} to="/map">
+                <PlaceIcon />
+              </IconButton>
+            }
+            subheader={`Use this barcode to ${this.props.location.pathname === '/earn' ? 'Earn' : 'Burn' } frequent flyer points`}
           />
-        </CardContent>
-      </Card>
-    </div>
-  );
+          <CardContent>
+            <img style={{width: '100%', height: 'auto'}}
+              src='https://s3-ap-southeast-2.amazonaws.com/ff-where-can-i-go/img/barcode.png'
+              alt="Barcode"
+            />
+          </CardContent>
+        </Card>
+      </div>
+    );
   }
 }
 

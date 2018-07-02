@@ -93,7 +93,6 @@ export class MapContainer extends React.Component {
   });
 
   onInfoWindowClick = (e) => {
-    console.log('click click')
     this.context.router.transitionTo('/map');
   }
 

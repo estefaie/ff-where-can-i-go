@@ -53,7 +53,6 @@ class Merchant extends React.Component {
   render() {
     const { classes } = this.props;
   const loc = locations.find((el) => el.merchantId == this.props.merchantId);
-  console.log('loc', loc);
   return (
     <div className={classes.container}>
       <Card className={classes.card}>

@@ -6,7 +6,7 @@ export const locations = [
       lat: "-33.923992",
       lng: "151.187343"
     },
-    type: "cafe,food",
+    type: "Cafe, Food",
     address: "Shop 1, 230 Coward Street, Mascot NSW 2020",
     website: "the-renegades.com.au",
     telephone: "(02) 8338 8884",
@@ -19,9 +19,9 @@ export const locations = [
       lat: "-33.924556",
       lng: "151.187502"
     },
-    type: "cafe,food,pub",
+    type: "Cafe, Food, Pub",
     address: "TNT Building, 197-201 Coward St, Mascot NSW 2020",
-    website: "luccacafe.com.au",
+    website: "luccaCafe.com.au",
     telephone: "(02) 9700 9933",
     opening: "8am–3pm"
   },
@@ -32,7 +32,7 @@ export const locations = [
       lat: "-33.926029",
       lng: "151.187615"
     },
-    type: "food,pub",
+    type: "Food, Pub",
     address: "Bourke Rd, Mascot NSW 2020 Located in: Holiday Inn Sydney Airport",
     website: "holidayinn.com",
     telephone: "(02) 9330 0600",
@@ -45,7 +45,7 @@ export const locations = [
       lat: "-33.923827",
       lng: "151.186666"
     },
-    type: "fittness",
+    type: "Fitness",
     address: "244 Coward St, Mascot NSW 2020",
     website: "f45training.com.aum",
     telephone: "(02) 9330 0600",
@@ -58,7 +58,7 @@ export const locations = [
       lat: "-33.924352",
       lng: "151.188720"
     },
-    type: "medical,fittness",
+    type: "Medication, Fitness",
     address: "214-220 Coward St, Mascot NSW 2020",
     website: "excelphysio.com.au",
     telephone: "1300 650 510",
@@ -71,7 +71,7 @@ export const locations = [
       lat: "-33.923088",
       lng: "151.186071"
     },
-    type: "medical",
+    type: "Medication",
     address: "7/19-33 Kent Rd, Mascot NSW 2020",
     website: "priceline.com.au",
     telephone: "(02) 9693 1830",
@@ -84,7 +84,7 @@ export const locations = [
       lat: "-33.919212",
       lng: "151.188780"
     },
-    type: "tools",
+    type: "Tools",
     address: "Gardeners Rd & Bourke Rd, Mascot NSW 2020",
     website: "bunnings.com.au",
     telephone: "(02) 9330 3800",
@@ -95,9 +95,10 @@ export const locations = [
 export default locations;
 
 export const locationTypes = [
-  "food",
-  "cafe",
-  "pub",
-  "fittness",
-  "medical"
+  "Cafe",
+  "Fitness",
+  "Food",
+  "Medication",
+  "Pub",
+  "Tools"
 ]
