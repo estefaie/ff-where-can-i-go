@@ -114,7 +114,7 @@ export class MapContainer extends React.Component {
     return (
       <div className={classes.container}>
         <Typography variant="title" gutterBottom className={classes.title}>
-          Where can I go to earn/redeem Qantas Frequent Flyer points?
+          Where can I go to earn/burn Qantas Frequent Flyer points?
         </Typography>
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor="category">Select a category</InputLabel>

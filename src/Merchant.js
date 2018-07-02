@@ -15,7 +15,7 @@ import red from '@material-ui/core/colors/red';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import PlaceIcon from '@material-ui/icons/Place';
-import RedeemIcon from '@material-ui/icons/Redeem';
+import BurnIcon from '@material-ui/icons/Redeem';
 import ExploreIcon from '@material-ui/icons/Explore';
 
 const styles = theme => ({
@@ -79,11 +79,11 @@ class Merchant extends React.Component {
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
           <div>
-            <Button variant="outlined" size="large" color="primary" className={classes.button} component={Link} to="/earn">
+            <Button variant="outlined" size="large" color="primary" className={classes.button} component={Link} to="/earn" params={{ merchantName: loc.merchantName }}>
               Earn <ExploreIcon style={{marginLeft: 10}} />
             </Button>
-            <Button variant="outlined" size="large" color="primary" className={classes.button} component={Link} to="/earn">
-              Redeem <RedeemIcon style={{marginLeft: 10}} />
+            <Button variant="outlined" size="large" color="primary" className={classes.button} component={Link} to="/burn" params={{ merchantName: loc.merchantName }}>
+              Burn <BurnIcon style={{marginLeft: 10}} />
             </Button>
           </div>
           <div style={{ marginLeft: "auto", marginRight: 0 }}>

@@ -11,7 +11,7 @@ const App = () => (
       <Route exact path="/" component={MapContainer} />
       <Route path="/map" component={MapContainer} />
       <Route path="/earn" component={Barcode} isEarn={true} />
-      <Route path="/redeem" component={Barcode} isEarn={false} />
+      <Route path="/burn" component={Barcode} isEarn={false} />
       <Route
         path="/merchant/:merchantId"
         component={p => (
